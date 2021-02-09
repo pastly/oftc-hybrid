@@ -110,7 +110,7 @@ make_dummy(int transfd)
   dlink_node *m;
   struct Client *client_p = make_client(NULL);
 
-  fd_open(&client_p->localClient->fd, transfd, 1, "Softboot");
+  fd_open(&client_p->localClient->fd, transfd, 1, 0, "Softboot");
   client_p->localClient->caps = -1;
 
   strcpy(client_p->name, ".");

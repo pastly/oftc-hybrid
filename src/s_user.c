@@ -1231,6 +1231,12 @@ user_welcome(struct Client *source_p)
     }
   }
 #endif
+  ilog(L_INFO, "Welcoming user. is_tor=%d", source_p->localClient->fd.flags.is_tor);
+  if (source_p->localClient->fd.flags.is_tor)
+  {
+      sendto_one(source_p, ":%s NOTICE %s :*** Connected securely via Tor",
+                 me.name, source_p->name);
+  }
 
   sendto_one(source_p, form_str(RPL_WELCOME), me.name, source_p->name, 
              ServerInfo.network_name, source_p->name);

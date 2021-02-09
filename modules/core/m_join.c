@@ -250,6 +250,7 @@ m_join(struct Client *client_p, struct Client *source_p,
         NORMAL_NUMERIC(ERR_CHANNELISFULL);
         NORMAL_NUMERIC(ERR_REGONLYCHAN);
         NORMAL_NUMERIC(ERR_SSLONLYCHAN);
+        NORMAL_NUMERIC(ERR_TORONLYCHAN);
       }
       if(i == ERR_TOOMANYCHANNELS)
           break;

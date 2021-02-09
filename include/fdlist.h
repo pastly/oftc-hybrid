@@ -77,6 +77,7 @@ typedef struct _fde {
 #ifdef HAVE_LIBCRYPTO
     unsigned int pending_read:1;
 #endif
+    unsigned int is_tor:1;
   } flags;
 
   struct {
@@ -103,7 +104,7 @@ extern struct Callback *fdlimit_cb;
 
 extern void fdlist_init(void);
 extern fde_t *lookup_fd(int);
-extern void fd_open(fde_t *, int, int, const char *);
+extern void fd_open(fde_t *, int, int, int, const char *);
 extern void fd_close(fde_t *);
 extern void fd_dump(struct Client *);
 #if 0

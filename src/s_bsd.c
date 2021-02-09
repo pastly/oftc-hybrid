@@ -357,9 +357,17 @@ add_connection(struct Listener *listener, struct irc_ssaddr *irn, int fd)
 
   new_client = make_client(NULL);
 
-  fd_open(&new_client->localClient->fd, fd, 1,
-          (listener->flags & LISTENER_SSL) ?
-	  "Incoming SSL connection" : "Incoming connection");
+
+  ilog(L_INFO, "Client connected. ssl=%d tor=%d",
+          listener->flags & LISTENER_SSL,
+          listener->flags & LISTENER_TOR);
+  if (listener->flags & LISTENER_SSL) {
+      fd_open(&new_client->localClient->fd, fd, 1, 0, "Incoming SSL connection");
+  } else if (listener->flags & LISTENER_TOR) {
+      fd_open(&new_client->localClient->fd, fd, 1, 1, "Incoming Tor connection");
+  } else {
+      fd_open(&new_client->localClient->fd, fd, 1, 0, "Incoming connection");
+  }
 
   /* 
    * copy address to 'sockhost' as a string, copy it to host too
@@ -763,7 +771,7 @@ comm_open(fde_t *F, int family, int sock_type, int proto, const char *note)
   execute_callback(setup_socket_cb, fd);
 
   /* update things in our fd tracking */
-  fd_open(F, fd, 1, note);
+  fd_open(F, fd, 1, 0, note);
   return 0;
 }
 

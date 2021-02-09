@@ -345,6 +345,7 @@ static const struct mode_letter
   { MODE_SPEAKONLYIFREG, 'M' },
   { MODE_REGONLY,        'R' },
   { MODE_SSLONLY,        'S' },
+  { MODE_TORONLY,        'T' },
   { 0, '\0' }
 };
 
@@ -1463,7 +1464,7 @@ static struct ChannelMode ModeTable[255] =
   {chm_nosuch, NULL},                             /* Q */
   {chm_simple, (void*)MODE_REGONLY},              /* R */
   {chm_simple, (void*)MODE_SSLONLY},              /* S */
-  {chm_nosuch, NULL},                             /* T */
+  {chm_simple, (void*)MODE_TORONLY},              /* T */
   {chm_nosuch, NULL},                             /* U */
   {chm_nosuch, NULL},                             /* V */
   {chm_nosuch, NULL},                             /* W */

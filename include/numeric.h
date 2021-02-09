@@ -150,6 +150,7 @@
 
 #define RPL_WHOISSSL         275
 #define RPL_WHOISCERTFP      276
+#define RPL_WHOISTOR         277
 
 #define RPL_ACCEPTLIST	     281
 #define RPL_ENDOFACCEPT      282
@@ -383,6 +384,7 @@
 #define ERR_CHANOPRIVSNEEDED 482
 #define ERR_CANTKILLSERVER   483
 #define ERR_RESTRICTED       484
+#define ERR_TORONLYCHAN      485
 /*	ERR_DESYNC	     484	 Dalnet,PTlink */
 /*	ERR_ATTACKDENY	     484	 unreal */
 /*	ERR_RESTRICTED	     484	   IRCnet extension */
@@ -545,6 +547,7 @@
 #define NUMERIC_STR_266 ":%s 266 %s :Current global users: %d  Max: %d"
 #define NUMERIC_STR_275 ":%s 275 %s %s :is connected via SSL (secure link)"
 #define NUMERIC_STR_276 ":%s 276 %s %s :has client certificate fingerprint %s"
+#define NUMERIC_STR_277 ":%s 277 %s %s :is connected via Tor onion service (secure link)"
 #define NUMERIC_STR_281 ":%s 281 %s :%s"
 #define NUMERIC_STR_282 ":%s 282 %s :End of /ACCEPT list."
 #define NUMERIC_STR_301 ":%s 301 %s %s :%s"
@@ -652,6 +655,7 @@
 #define NUMERIC_STR_482 ":%s 482 %s %s :You're not channel operator"
 #define NUMERIC_STR_483 ":%s 483 %s :You can't kill a server!"
 #define NUMERIC_STR_484 ":%s 484 %s :You are restricted"
+#define NUMERIC_STR_485 ":%s 480 %s %s :You must connect via Tor onion service to join this channel (+T)"
 #define NUMERIC_STR_491 ":%s 491 %s :Only few of mere mortals may try to enter the twilight zone"
 #define NUMERIC_STR_501 ":%s 501 %s :Unknown MODE flag"
 #define NUMERIC_STR_502 ":%s 502 %s :Can't change mode for other users"

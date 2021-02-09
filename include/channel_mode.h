@@ -61,6 +61,7 @@
 #define MODE_SPEAKONLYIFREG 0x0100
 #define MODE_SSLONLY        0x0200
 #define MODE_OPMODERATED    0x0400
+#define MODE_TORONLY        0x0800
 
 #define CHFL_BAN_CHECKED  0x0400
 #define CHFL_BAN_SILENCED 0x0800
@@ -84,6 +85,7 @@
 #define RegOnlyChannel(x)       ((x) && ((x)->mode.mode & MODE_REGONLY))
 #define SpeakOnlyIfReg(x)       ((x) && ((x)->mode.mode & MODE_SPEAKONLYIFREG))
 #define SSLonlyChannel(x)       ((x) && ((x)->mode.mode & MODE_SSLONLY))
+#define TorOnlyChannel(x)       ((x) && ((x)->mode.mode & MODE_TORONLY))
     
 
 struct ChModeChange

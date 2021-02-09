@@ -105,7 +105,7 @@ make_dummy(int transfd)
   dlink_node *m;
   struct Client *client_p = make_client(NULL);
 
-  fd_open(&client_p->localClient->fd, transfd, 1, "Softboot");
+  fd_open(&client_p->localClient->fd, transfd, 1, 0, "Softboot");
   client_p->localClient->caps = -1;
 
   strcpy(client_p->name, ".");
@@ -334,12 +334,14 @@ restore_socket(struct Client *client_p, int fd, int ctrlfd,
   client_p->localClient = BlockHeapAlloc(lclient_heap);
 //  attach_conf(client_p, default_class);
 
-  fd_open(&client_p->localClient->fd, fd, 1, buf);
+  // XXX how to determine whether the client was a tor client
+  fd_open(&client_p->localClient->fd, fd, 1, 0, buf);
   fcntl(fd, F_SETFD, FD_CLOEXEC);
   if (ctrlfd >= 0)
   {
     snprintf(buf, sizeof(buf), "slink ctrl: %s", client_p->name);
-    fd_open(&client_p->localClient->ctrlfd, ctrlfd, 1, buf);
+    // XXX how to determine whether the client was a tor client
+    fd_open(&client_p->localClient->ctrlfd, ctrlfd, 1, 0, buf);
   }
 
   addr.ss_len = sizeof(addr);
@@ -495,7 +497,7 @@ load_state(int transfd)
   //
   // Read server burst from &me
   //
-  fd_open(&me.localClient->fd, transfd, 1, "Softboot");
+  fd_open(&me.localClient->fd, transfd, 1, 0, "Softboot");
   serverize(&me);
 
   while (fgets(buf, sizeof(buf), f))

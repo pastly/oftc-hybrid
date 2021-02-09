@@ -115,7 +115,7 @@ initBlockHeap(void)
 
   if (zero_fd < 0)
     outofmemory();
-  fd_open(&dpfd, zero_fd, 0, "Anonymous mmap()");
+  fd_open(&dpfd, zero_fd, 0, 0, "Anonymous mmap()");
 #endif
   eventAdd("heap_garbage_collection", &heap_garbage_collection, NULL, 119);
 #endif

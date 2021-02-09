@@ -61,7 +61,7 @@ init_netio(void)
     exit(115); /* Whee! */
   }
 
-  fd_open(&dpfd, fd, 0, "/dev/poll file descriptor");
+  fd_open(&dpfd, fd, 0, 0, "/dev/poll file descriptor");
 }
 
 /*

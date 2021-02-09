@@ -713,6 +713,8 @@ can_join(struct Client *source_p, struct Channel *chptr, const char *key)
   if(RegOnlyChannel(chptr) && !IsNickServReg(source_p))
     return(ERR_REGONLYCHAN);
 
+  // XXX as it is now, if channel is +ST, you have to have both. That's not
+  // ideal. This should be changed
   if (SSLonlyChannel(chptr))
   {
 #ifdef HAVE_LIBCRYPTO
@@ -721,6 +723,11 @@ can_join(struct Client *source_p, struct Channel *chptr, const char *key)
 #else
     return (ERR_SSLONLYCHAN);  /* deny everyone on a non SSL-enabled server */
 #endif
+  }
+  if (TorOnlyChannel(chptr))
+  {
+    if (MyClient(source_p) && !(source_p->localClient->fd.flags.is_tor))
+        return (ERR_TORONLYCHAN);
   }
 
   return 0;

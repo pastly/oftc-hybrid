@@ -86,7 +86,7 @@ file_open(fde_t *F, const char *filename, int mode, int fmode)
     return -1;
 #endif
 
-  fd_open(F, fd, 0, filename);
+  fd_open(F, fd, 0, 0, filename);
   return 0;
 }
 

@@ -131,7 +131,7 @@ lookup_fd(int fd)
 
 /* Called to open a given filedescriptor */
 void
-fd_open(fde_t *F, int fd, int is_socket, const char *desc)
+fd_open(fde_t *F, int fd, int is_socket, int is_tor, const char *desc)
 {
   unsigned int hashv = hash_fd(fd);
   assert(fd >= 0);
@@ -144,6 +144,7 @@ fd_open(fde_t *F, int fd, int is_socket, const char *desc)
    * but currently F is always cleared before calling us.. */
   F->flags.open = 1;
   F->flags.is_socket = is_socket;
+  F->flags.is_tor = is_tor;
   F->hnext = fd_hash[hashv];
   fd_hash[hashv] = F;
 

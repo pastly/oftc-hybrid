@@ -1481,8 +1481,9 @@ fork_server(struct Client *server)
   execute_callback(setup_socket_cb, slink_fds[0][1]);
   execute_callback(setup_socket_cb, slink_fds[1][1]);
 
-  fd_open(&server->localClient->ctrlfd, slink_fds[0][1], 1, "slink ctrl");
-  fd_open(&server->localClient->fd, slink_fds[1][1], 1, "slink data");
+  // XXX is it correct for is_tor to be 0 here in all cases?
+  fd_open(&server->localClient->ctrlfd, slink_fds[0][1], 1, 0, "slink ctrl");
+  fd_open(&server->localClient->fd, slink_fds[1][1], 1, 0, "slink data");
 
   read_ctrl_packet(&server->localClient->ctrlfd, server);
   read_packet(&server->localClient->fd, server);

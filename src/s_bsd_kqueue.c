@@ -69,7 +69,7 @@ init_netio(void)
     exit(115); /* Whee! */
   }
 
-  fd_open(&kqfd, fd, 0, "kqueue() file descriptor");
+  fd_open(&kqfd, fd, 0, 0, "kqueue() file descriptor");
 }
 
 /*

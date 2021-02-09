@@ -288,6 +288,7 @@ resv_exempt     { return RESV_EXEMPT; }
 rsa_private_key_file		{ return RSA_PRIVATE_KEY_FILE; }
 rsa_public_key_file		{ return RSA_PUBLIC_KEY_FILE; }
 ssl 				{ return T_SSL; }
+tor { return T_TOR; }
 ssl_certificate_file        { return SSL_CERTIFICATE_FILE; }
 dh_params_file		{ return DH_PARAMS_FILE; }
 ecdh_curve			{ return ECDH_CURVE; }

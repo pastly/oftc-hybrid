@@ -369,6 +369,7 @@ unhook_hub_leaf_confs(void)
 %token  T_SKILL
 %token  T_SPY
 %token  T_SSL
+%token  T_TOR
 %token  T_UMODES
 %token  T_UNAUTH
 %token  T_UNRESV
@@ -1935,6 +1936,10 @@ listen_flags_item: T_SSL
 {
   if (ypass == 2)
     listener_flags |= LISTENER_SERVER;
+} | T_TOR
+{
+  if (ypass == 2)
+     listener_flags |= LISTENER_TOR;
 };
 
 

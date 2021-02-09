@@ -482,6 +482,11 @@ whois_person(struct Client *source_p, struct Client *target_p)
       }
     }
 #endif
+    if (target_p->localClient->fd.flags.is_tor)
+    {
+      sendto_one(source_p, form_str(RPL_WHOISTOR),
+                 me.name, source_p->name, target_p->name);
+    }
     sendto_one(source_p, form_str(RPL_WHOISIDLE),
                me.name, source_p->name, target_p->name,
                CurrentTime - target_p->localClient->last,

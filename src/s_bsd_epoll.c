@@ -109,7 +109,7 @@ init_netio(void)
     exit(115); /* Whee! */
   }
 
-  fd_open(&efd, fd, 0, "epoll file descriptor");
+  fd_open(&efd, fd, 0, 0, "epoll file descriptor");
 }
 
 /*
